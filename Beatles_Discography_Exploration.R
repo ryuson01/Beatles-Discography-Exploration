@@ -167,7 +167,7 @@ main_beatles_danceability<- filter(danceability_by_songwriter, Songwriter == "Le
 qplot(Songwriter,mean_danceability, data = danceability_by_songwriter, geom = "col", xlab = "Songwriter", fill=Songwriter ,aes(reorder(Songwriter, -mean_danceability)))+ geom_text(aes(label=mean_danceability), size=2.75, vjust=-0.4)
 qplot(Songwriter,mean_danceability, data = main_beatles_danceability, geom = "col", xlab = "Songwriter", fill=Songwriter ,aes(reorder(Songwriter, -mean_danceability)))+ geom_text(aes(label=mean_danceability), size=2.75, vjust=-0.4)
 
-#################
+
 ### Acousticness 
 acousticness_by_songwriter <- summarise(group_by(beatles_songwriter,Songwriter), mean_acousticness=mean(acousticness))
 main_beatles_acousticness <-filter(acousticness_by_songwriter, Songwriter == "Lennon" | Songwriter == "McCartney" | Songwriter == "Harrison")
@@ -175,7 +175,7 @@ main_beatles_acousticness <-filter(acousticness_by_songwriter, Songwriter == "Le
 qplot(Songwriter,mean_acousticness, data = acousticness_by_songwriter, geom = "col", xlab = "Songwriter", fill=Songwriter ,aes(reorder(Songwriter, -mean_acousticness)))+ geom_text(aes(label=mean_acousticness), size=2.75, vjust=-0.4)
 qplot(Songwriter,mean_acousticness, data = main_beatles_acousticness, geom = "col", xlab = "Songwriter", fill=Songwriter ,aes(reorder(Songwriter, -mean_acousticness)))+ geom_text(aes(label=mean_acousticness), size=2.75, vjust=-0.4)
 
-#################
+
 ### Positivity 
 valence_by_songwriter <- summarise(group_by(beatles_songwriter,Songwriter), mean_valence=mean(valence))
 main_beatles_valence <-filter(valence_by_songwriter, Songwriter == "Lennon" | Songwriter == "McCartney" | Songwriter == "Harrison")
@@ -185,7 +185,7 @@ qplot(Songwriter,mean_valence, data = valence_by_songwriter, geom = "col", xlab 
 qplot(Songwriter,mean_valence, data = main_beatles_valence, geom = "col", xlab = "Songwriter", fill=Songwriter ,aes(reorder(Songwriter, -mean_valence)))+ geom_text(aes(label=mean_valence), size=2.75, vjust=-0.4)
 
 #################
-### By Singer 
+### Exploration By Singer 
 beatles_singer1 <- select(Beatles_merged, song, Singer1, danceability, energy, speechiness, acousticness, liveness, valence)
 beatles_singer2<- select(Beatles_merged, song, Singer2, danceability, energy, speechiness, acousticness, liveness, valence)
 beatles_singer3 <- select(Beatles_merged, song, Singer3, danceability, energy, speechiness, acousticness, liveness, valence)
@@ -199,15 +199,15 @@ names(beatles_singer4)[names(beatles_singer4) == "Singer4"] <- "Singer"
 beatles_singer <- rbind(beatles_singer1,beatles_singer2,beatles_singer3,beatles_singer4)
 beatles_singer<- na.omit(beatles_singer)
 
-#################
-### Danceability by Singer
+
+### Danceability
 danceability_by_singer <- summarise(group_by(beatles_singer,Singer), mean_danceability=mean(danceability))
 main_beatle_singers_danceability<- filter(danceability_by_singer, Singer == "Lennon" | Singer == "McCartney" | Singer == "Harrison" | Singer == "Starr")
 
 qplot(Singer,mean_danceability, data = danceability_by_singer, geom = "col", xlab = "Singer", fill=Singer, aes(reorder(Singer, -mean_danceability))) + geom_text(aes(label=mean_danceability), size=2.75, vjust=-0.4)                                                                                                                                                               vjust=-0.4)
 qplot(Singer,mean_danceability, data = main_beatle_singers_danceability, geom = "col", xlab = "Singer", fill=Singer ,aes(reorder(Singer, -mean_danceability)))+ geom_text(aes(label=mean_danceability), size=2.75, vjust=-0.4)
 
-#################
+
 ### Energy
 beatles_singer$energy<- gsub("\\)", "0", beatles_singer$energy)
 beatles_singer$energy <- as.numeric(beatles_singer$energy)
@@ -218,7 +218,7 @@ main_beatle_singers_energy<- filter(energy_by_singer, Singer == "Lennon" | Singe
 qplot(Singer,mean_energy, data = energy_by_singer, geom = "col", xlab = "Singer", fill=Singer ,aes(reorder(Singer, -mean_energy)))+ geom_text(aes(label=mean_energy), size=2.75, vjust=-0.4)
 qplot(Singer,mean_energy, data = main_beatle_singers_energy, geom = "col", xlab = "Singer", fill=Singer ,aes(reorder(Singer, -mean_energy)))+ geom_text(aes(label=mean_energy), size=2.75, vjust=-0.4)
 
-#################
+
 #### Speechiness 
 speechiness_by_singer <- summarise(group_by(beatles_singer,Singer), mean_speechiness=mean(speechiness))
 main_beatle_singers_speechiness<- filter(speechiness_by_singer, Singer == "Lennon" | Singer == "McCartney" | Singer == "Harrison" | Singer == "Starr")
@@ -226,7 +226,7 @@ main_beatle_singers_speechiness<- filter(speechiness_by_singer, Singer == "Lenno
 qplot(Singer,mean_speechiness, data = speechiness_by_singer, geom = "col", xlab = "Singer", fill=Singer ,aes(reorder(Singer, -mean_speechiness)))+ geom_text(aes(label=mean_speechiness), size=2.75, vjust=-0.4)
 qplot(Singer,mean_speechiness, data = main_beatle_singers_speechiness, geom = "col", xlab = "Singer", fill=Singer ,aes(reorder(Singer, -mean_speechiness)))+ geom_text(aes(label=mean_speechiness), size=2.75, vjust=-0.4)
 
-#################
+
 #### Acousticness
 acousticness_by_singer <- summarise(group_by(beatles_singer,Singer), mean_acousticness=mean(acousticness))
 main_beatle_singers_acousticness<- filter(acousticness_by_singer, Singer == "Lennon" | Singer == "McCartney" | Singer == "Harrison" | Singer == "Starr")
@@ -234,7 +234,7 @@ main_beatle_singers_acousticness<- filter(acousticness_by_singer, Singer == "Len
 qplot(Singer,mean_acousticness, data = acousticness_by_singer, geom = "col", xlab = "Singer", fill=Singer ,aes(reorder(Singer, -mean_acousticness)))+ geom_text(aes(label=mean_acousticness), size=2.75, vjust=-0.4)
 qplot(Singer,mean_acousticness, data = main_beatle_singers_acousticness, geom = "col", xlab = "Singer", fill=Singer ,aes(reorder(Singer, -mean_acousticness)))+ geom_text(aes(label=mean_acousticness), size=2.75, vjust=-0.4)
 
-#################
+
 #### Liveness
 liveness_by_singer <- summarise(group_by(beatles_singer,Singer), mean_liveness=mean(liveness))
 main_beatle_singers_liveness<- filter(liveness_by_singer, Singer == "Lennon" | Singer == "McCartney" | Singer == "Harrison" | Singer == "Starr")
@@ -242,7 +242,7 @@ main_beatle_singers_liveness<- filter(liveness_by_singer, Singer == "Lennon" | S
 qplot(Singer,mean_liveness, data = liveness_by_singer, geom = "col", xlab = "Singer", fill=Singer ,aes(reorder(Singer, -mean_liveness)))+ geom_text(aes(label=mean_liveness), size=2.75, vjust=-0.4)
 qplot(Singer,mean_liveness, data = main_beatle_singers_liveness, geom = "col", xlab = "Singer", fill=Singer ,aes(reorder(Singer, -mean_liveness)))+ geom_text(aes(label=mean_liveness), size=2.75, vjust=-0.4)
 
-#################
+
 #### Positivity
 valence_by_singer <- summarise(group_by(beatles_singer,Singer), mean_valence=mean(valence))
 main_beatle_singers_valence<- filter(valence_by_singer, Singer == "Lennon" | Singer == "McCartney" | Singer == "Harrison" | Singer == "Starr")
@@ -257,7 +257,7 @@ danceability_by_album <- summarise(group_by(Beatles_merged,album), mean_danceabi
 
 qplot(album,mean_danceability, data = danceability_by_album, geom = "col", xlab = "Album", fill=album ,aes(reorder(album, -mean_danceability)))+ geom_text(aes(label=mean_danceability), size=2.75, vjust=-0.4)
 
-#################
+
 #### Energy
 Beatles_merged$energy<- gsub("\\)", "0", Beatles_merged$energy)
 Beatles_merged$energy <- as.numeric(Beatles_merged$energy)
@@ -265,25 +265,25 @@ energy_by_album <-summarise(group_by(Beatles_merged,album), mean_energy=mean(ene
 
 qplot(album,mean_energy, data = energy_by_album, geom = "col", xlab = "Album", fill=album ,aes(reorder(album, -mean_energy)))+ geom_text(aes(label=mean_energy), size=2.75, vjust=-0.4)
 
-#################
+
 #### Speechiness 
 speechiness_by_album <- summarise(group_by(Beatles_merged,album), mean_speechiness=mean(speechiness))
 
 qplot(album,mean_speechiness, data = speechiness_by_album, geom = "col", xlab = "Album", fill=album ,aes(reorder(album, -mean_speechiness)))+ geom_text(aes(label=mean_speechiness), size=2.75, vjust=-0.4)
 
-#################
+
 ### Acousticness 
 acousticness_by_album <- summarise(group_by(Beatles_merged,album), mean_acousticness=mean(acousticness))
 
 qplot(album,mean_liveness, data = acousticness_by_album, geom = "col", xlab = "Album", fill=album ,aes(reorder(album, -mean_liveness)))+ geom_text(aes(label=mean_liveness), size=2.75, vjust=-0.4)
 
-#################
+
 ### Liveness 
 liveness_by_album <- summarise(group_by(Beatles_merged,album), mean_liveness=mean(liveness))
 
 qplot(album,mean_liveness, data = liveness_by_album, geom = "col", xlab = "Album", fill=album ,aes(reorder(album, -mean_liveness)))+ geom_text(aes(label=mean_liveness), size=2.75, vjust=-0.4)
 
-#################
+
 ### Positivity
 valence_by_album <- summarise(group_by(Beatles_merged,album), mean_valence=mean(valence))
 
@@ -296,31 +296,31 @@ danceability_by_year <- summarise(group_by(Beatles_merged,year), mean_danceabili
 
 ggplot() + geom_line(aes(y = mean_danceability, x = year), data = danceability_by_year)
 
-#################
+
 ### Energy
 energy_by_year <- summarise(group_by(Beatles_merged,year), mean_energy=mean(energy))
 
 ggplot() + geom_line(aes(y = mean_energy, x = year), data = energy_by_year)
 
-#################
+
 ### Speechiness
 speechiness_by_year <- summarise(group_by(Beatles_merged,year), mean_speechiness=mean(speechiness))
 
 ggplot() + geom_line(aes(y = mean_speechiness, x = year), data = speechiness_by_year)
 
-#################
+
 ### Acousticness
 acousticness_by_year <- summarise(group_by(Beatles_merged,year), mean_acousticness=mean(acousticness))
 
 ggplot() + geom_line(aes(y = mean_acousticness, x = year), data = acousticness_by_year)
 
-#################
+
 ### Liveness
 liveness_by_year <- summarise(group_by(Beatles_merged,year), mean_liveness=mean(liveness))
 
 ggplot() + geom_line(aes(y = mean_liveness, x = year), data = liveness_by_year)
 
-#################
+
 ### Positivity
 valence_by_year <- summarise(group_by(Beatles_merged,year), mean_valence=mean(valence))
 
