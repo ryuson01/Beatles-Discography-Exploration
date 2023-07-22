@@ -49,14 +49,4 @@ This dataset contains 213 instances of individual song information; after cleani
 
 - **song** (Text): The specific song analyzed in each row, corresponding to the 'song' column in the Kaggle dataset.
 - **songwriter1...songwriter5** (Text): Individuals who aided in writing each specific song. Songwriter2 can only be not null if songwriter1 is not null, and so on.
-- **singer1...singer4** (Text): Individuals who sang in each song. Singer2 can only be not null if singer1 is not null, and so on.
-
-## Directory Structure
-- README.md                #This README file, which provides an overview of the project.
-- data/                    # Contains the raw data and website link used in the project. Includes Data Dictionary of final cleaned data frame used for analysis.
-- scripts/                 # R scripts used during the data wrangling phase.
-- visualizations/          # Charts, plots, and visual representations of our findings.
-
-
-
-  
+- **singer1...singer4** (Text): Individuals who sang in each song. Singer2 can only be not null if singer1 is not null, and so on. 
