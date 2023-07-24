@@ -1,6 +1,4 @@
-#Jackson Kithcart and Ryan Yuson
-#Group Project Data Analysis
-
+# Data Analysis & Visualization
 # Create data frames for each songwriter
 beatles_songwriter1 <- select(Beatles_merged, song, Songwriter1, danceability, acousticness, valence)
 beatles_songwriter2<- select(Beatles_merged, song, Songwriter2, danceability, acousticness, valence)
