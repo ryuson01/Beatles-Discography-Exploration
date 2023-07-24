@@ -20,9 +20,9 @@ This project seeks to address the following questions:
 ## Methodology
 To achieve insights into The Beatles' discography, we will follow these steps:
 
-1. Data Acquisition (_Beatles_WebScraping.R_): Curatwe dataset from reliable sources and reputable music archives.
-2. Data Cleaning (_Beatles_Integrations.R_): Ensure data integrity by handling missing values, resolving inconsistencies, and removing duplicates.
-3. Data Wrangling (_Beatles_Analysis.R_): Apply advanced data wrangling techniques with R to prepare the dataset for exploration and visualization to uncover patterns within our dataset.
+1. Data Acquisition: Curate a dataset from reliable sources and reputable music archives. (_Beatles_WebScraping.R_)
+2. Data Cleaning: Ensure data integrity by handling missing values, resolving inconsistencies, and removing duplicates.  (_Beatles_Integrations.R_)
+3. Data Wrangling: Apply advanced data wrangling techniques with R to prepare the dataset for exploration and visualization to uncover patterns within our dataset. (_Beatles_Analysis.R_)
 
 # Datasets
 This project utilizes two distinct datasets to gain insights into The Beatles' discography.
