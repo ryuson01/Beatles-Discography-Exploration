@@ -14,7 +14,7 @@ While defining a 'great song' may be subjective, specific metrics can shed light
 This project seeks to address the following questions:
 
 1. Can we identify discernible patterns in The Beatles' discography that correlate with song popularity?
-2. Do certain song attributes, such as tempo, key, or length, play a role in the overall appeal of their music?
+2. Do certain song attributes play a role in the overall appeal & success of their music?
 3. Is there a relationship between critical acclaim, chart rankings, and specific musical elements?
 
 ## Methodology
