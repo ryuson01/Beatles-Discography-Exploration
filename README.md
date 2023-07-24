@@ -20,11 +20,9 @@ This project seeks to address the following questions:
 ## Methodology
 To achieve insights into The Beatles' discography, we will follow these steps:
 
-1. Data Acquisition: We have curated our dataset from reliable sources and reputable music archives.
-2. Data Cleaning: We will ensure data integrity by handling missing values, resolving inconsistencies, and removing duplicates.
-3. Data Wrangling: We will apply advanced data wrangling techniques with R to prepare the dataset for analysis.
-4. Exploratory Data Analysis: We will perform in-depth exploration to uncover patterns and correlations within the music data.
-5. Visualization: We will create compelling visual representations, such as plots and charts, to present our findings effectively.
+1. Data Acquisition (_Beatles_WebScraping.R_): Curatwe dataset from reliable sources and reputable music archives.
+2. Data Cleaning (_Beatles_Integrations.R_): Ensure data integrity by handling missing values, resolving inconsistencies, and removing duplicates.
+3. Data Wrangling (_Beatles_Analysis.R_): Apply advanced data wrangling techniques with R to prepare the dataset for exploration and visualization to uncover patterns within our dataset.
 
 # Datasets
 This project utilizes two distinct datasets to gain insights into The Beatles' discography.
@@ -49,4 +47,6 @@ This dataset contains 213 instances of individual song information; after cleani
 
 - **song** (Text): The specific song analyzed in each row, corresponding to the 'song' column in the Kaggle dataset.
 - **songwriter1...songwriter5** (Text): Individuals who aided in writing each specific song. Songwriter2 can only be not null if songwriter1 is not null, and so on.
-- **singer1...singer4** (Text): Individuals who sang in each song. Singer2 can only be not null if singer1 is not null, and so on. 
+- **singer1...singer4** (Text): Individuals who sang in each song. Singer2 can only be not null if singer1 is not null, and so on.
+
+
