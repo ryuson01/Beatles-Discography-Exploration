@@ -1,9 +1,6 @@
-#Jackson Kithcart and Ryan Yuson
-#Group Project Data Cleaning/merging
-#12/9/2022
+### Data Cleaning/merging
 
-
-### Input semicolon between individuals names
+# Input semicolon between individuals names
 songs$`Songwriter(s)`<- gsub("LennonMcCartney", "Lennon; McCartney", songs$`Songwriter(s)`)
 songs$`Songwriter(s)`<- gsub("Johnny RussellVoni Morrison" , "Johnny Russell; Voni Morrison" , songs$`Songwriter(s)`)
 songs$`Songwriter(s)`<- gsub("Burt BacharachMack DavidLuther Dixon" , "Burt Bacharach; Mack David; Luther Dixon" , songs$`Songwriter(s)`)
@@ -23,21 +20,20 @@ songs$`Songwriter(s)`<- gsub("Gerry GoffinCarole King" , "Gerry Goffin; Carole K
 
 ncols <- max(stringr::str_count(songs$`Songwriter(s)`, "; ")) + 1
 
-###Create new columns
+# Create new columns
 colmn <- paste("col", 1:ncols)
 
-###Create dataframes with columns
+# Create dataframes with columns
 songs <- cbind(songs, reshape2::colsplit(songs$`Songwriter(s)`, "; ", colmn))
-
 
 unique(songs$`Lead vocal(s)[d]`)
 
-### Remove parentheses from vocals
+# Remove parentheses from vocals
 songs$`Lead vocal(s)[d]`<- gsub("[(]","", songs$`Lead vocal(s)[d]`)
 songs$`Lead vocal(s)[d]`<- gsub("[)]","", songs$`Lead vocal(s)[d]`)
 
 
-#### Input semincolon between names
+# Input semincolon between names
 songs$`Lead vocal(s)[d]`<- gsub("McCartneywith Lennon", "McCartney; Lennon", songs$`Lead vocal(s)[d]`)
 songs$`Lead vocal(s)[d]`<- gsub("LennonMcCartney", "Lennon; McCartney", songs$`Lead vocal(s)[d]`)
 songs$`Lead vocal(s)[d]`<- gsub("Lennonwith McCartney", "Lennon; McCartney", songs$`Lead vocal(s)[d]`)
@@ -51,16 +47,16 @@ songs$`Lead vocal(s)[d]`<- gsub("McCartney; Lennon,Harrison,and Starr", "McCartn
 songs$`Lead vocal(s)[d]`<- gsub("Lennon; McCartneyand Harrison", "Lennon; McCartney; Harrison", songs$`Lead vocal(s)[d]`)
 songs$`Lead vocal(s)[d]`<- gsub("Lennon; McCartneyHarrison", "Lennon; McCartney; Harrison", songs$`Lead vocal(s)[d]`)
 
-####Create new columns
+# Create new columns
 colmn2 <- paste("col", 6:9)
 
-###Create data frame by putting old data into new dataframe splitting columns by semicolon
+# Create data frame by putting old data into new dataframe splitting columns by semicolon
 songs <- cbind(songs, reshape2::colsplit(songs$`Lead vocal(s)[d]`, "; ", colmn2))
 
-###INput NAs
+# Input NAs
 songs[songs ==""] <- NA
 
-####Get rid of Wikipedia links from song data frame
+# Get rid of Wikipedia links from song data frame
 songs$Song<- gsub("#","", songs$Song)
 songs$Song<- gsub("\"", "", songs$Song)
 songs$Song<- gsub("\\[e\\]", "", songs$Song)
@@ -75,12 +71,12 @@ songs$Song<- gsub("\\[m\\]", "", songs$Song)
 songs$Song<- gsub("\\[n\\]", "", songs$Song)
 songs$Song<- gsub("\\[o\\]", "", songs$Song)
 
-### Make song titles Capitalized
+# Make song titles Capitalized
 Beatles$song <- str_to_title(Beatles$song)
 songs$Song <-str_to_title(songs$Song)
 
 
-#### Fix errors in Beatles and Song data frames
+# Fix errors in Beatles and Song data frames
 songs$Song<- gsub("Anna \\(Go to Him\\)", "Anna", songs$Song)
 Beatles$song <- gsub("Youre", "You\'re", Beatles$song)
 Beatles$song <- gsub("Babys", "Baby\'s", Beatles$song)
@@ -111,11 +107,10 @@ Beatles$song <- gsub("Shes", "She\'s", Beatles$song)
 Beatles$song <- gsub("The Continue Story Of Bungalow Bill", "The Continuing Story Of Bungalow Bill", Beatles$song)
 Beatles$song <- gsub("Yer Blue", "Yer Blues", Beatles$song)
 
-#### Create data frame with singers, songwriters, and songs
+# Create data frame with singers, songwriters, and songs
 songs2 <- songs[ ,c("Song", "col 1", "col 2", "col 3", "col 4", "col 5", "col 6", "col 7", "col 8", "col 9")]
 
-##Input new, more descriptive, column names 
-
+# Input new, more descriptive, column names 
 names(songs2)[names(songs2) == "Song"] <- "song"
 names(songs2)[names(songs2) == "col 1"] <- "Songwriter1"
 names(songs2)[names(songs2) == "col 2"] <- "Songwriter2"
@@ -127,13 +122,13 @@ names(songs2)[names(songs2) == "col 7"] <- "Singer2"
 names(songs2)[names(songs2) == "col 8"] <- "Singer3"
 names(songs2)[names(songs2) == "col 9"] <- "Singer4"
 
-### Get rid of spaces on the end of song
+# Get rid of spaces on the end of song
 Beatles$song <- trimws(Beatles$song, which = c('right'))
 songs2$song <- trimws(songs2$song, which = c('right'))
 
-#### Merge data by common song name
+# Merge data by common song name
 Beatles_merged <- merge(Beatles, songs2, by="song")
 
-### Fix error in energy column
+# Fix error in energy column
 Beatles_merged$energy<- gsub("\\)", "0", Beatles_merged$energy)
 Beatles_merged$energy <- as.numeric(Beatles_merged$energy)
